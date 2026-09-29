@@ -1,0 +1,6 @@
+{
+  "name": "Training Report Management System",
+  "description": "Comprehensive corporate portal for GET and DET trainees to submit daily and weekly reports, with review workflows, compliance analytics, and Google Sheets integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

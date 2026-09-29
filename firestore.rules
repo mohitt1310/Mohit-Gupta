@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Test connectivity document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // User management records
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Daily activity training reports
+    match /dailyReports/{reportId} {
+      allow read, write: if true;
+    }
+
+    // Weekly synthesis training reports
+    match /weeklyReports/{reportId} {
+      allow read, write: if true;
+    }
+
+    // System configuration and logos
+    match /systemConfig/{configKey} {
+      allow read, write: if true;
+    }
+
+    // Auto-saved form drafts
+    match /formDrafts/{draftKey} {
+      allow read, write: if true;
+    }
+
+    // Default deny for unknown collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+import { User, DailyReport, WeeklyReport, ComplianceConfig, InAppNotification } from '../types';
+
+export const INITIAL_USERS: User[] = [
+  {
+    id: 'USR-ADMIN-01',
+    employeeId: 'ADM-1001',
+    name: 'Vikramaditya Rao',
+    email: 'admin@company.com',
+    password: 'Admin@123',
+    department: 'Production Planning Control',
+    subDepartment: 'Daily Production Monitoring & MIS',
+    designation: 'Head of Plant Operations & Training',
+    reportingManager: 'Managing Director',
+    joiningDate: '2021-04-01',
+    role: 'ADMIN',
+    status: 'ACTIVE',
+    createdDate: '2021-04-01T09:00:00.000Z',
+    phone: '+91 98765 43210',
+  },
+  {
+    id: 'USR-GET-001',
+    employeeId: 'GET-2026-042',
+    name: 'Aarav Sharma',
+    email: 'get1@uttam-bharat.com',
+    password: 'Trainee@123',
+    department: 'Production',
+    subDepartment: 'Coil Winding (HV & LV)',
+    designation: 'Graduate Engineer Trainee (GET)',
+    reportingManager: 'Rajesh Verma - Production DGM',
+    joiningDate: '2026-07-01',
+    role: 'GET',
+    status: 'ACTIVE',
+    createdDate: '2026-07-01T09:00:00.000Z',
+    phone: '+91 98111 22334',
+  },
+  {
+    id: 'USR-GET-018',
+    employeeId: 'GET-2026-018',
+    name: 'sattu',
+    email: 'get4@uttam-bharat.com',
+    password: 'Trainee@123',
+    department: 'Learning and Development',
+    subDepartment: 'GET / DET Training Curriculum & Onboarding',
+    designation: 'Graduate Engineer Trainee (GET)',
+    reportingManager: 'Rajesh Verma - Production DGM',
+    joiningDate: '2026-08-01',
+    role: 'GET',
+    status: 'ACTIVE',
+    createdDate: '2026-08-01T09:00:00.000Z',
+    phone: '+91 98123 45678',
+  }
+];
+
+export const INITIAL_DAILY_REPORTS: DailyReport[] = [];
+
+export const INITIAL_WEEKLY_REPORTS: WeeklyReport[] = [];
+
+export const INITIAL_COMPLIANCE_CONFIG: ComplianceConfig = {
+  workingDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  dailyDeadline: '18:30',
+  weeklyDeadlineDay: 'Saturday',
+  weeklyDeadlineTime: '20:00',
+};
+
+export const INITIAL_NOTIFICATIONS: InAppNotification[] = [];

@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "System users including trainees, managers, and administrators",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user ID" },
+        "employeeId": { "type": "string", "description": "Employee ID code" },
+        "name": { "type": "string", "description": "User full name" },
+        "email": { "type": "string", "description": "User email address" },
+        "role": { "type": "string", "description": "Role: USER, ADMIN, GET, or DET" },
+        "department": { "type": "string", "description": "Assigned engineering department" },
+        "subDepartment": { "type": "string", "description": "Specific sub-department section" },
+        "designation": { "type": "string", "description": "Job designation" },
+        "status": { "type": "string", "description": "Account status: ACTIVE or INACTIVE" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "dailyReports": {
+      "title": "DailyReport",
+      "description": "Daily training reports submitted by trainees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique daily report ID" },
+        "userId": { "type": "string", "description": "Author user ID" },
+        "userName": { "type": "string", "description": "Author full name" },
+        "date": { "type": "string", "description": "Report date (YYYY-MM-DD)" },
+        "department": { "type": "string", "description": "Department" },
+        "subDepartment": { "type": "string", "description": "Sub-department" },
+        "status": { "type": "string", "description": "Report status: DRAFT, SUBMITTED, REVIEWED, REJECTED" },
+        "workDescription": { "type": "string", "description": "Detailed tasks and operations performed" },
+        "learningOutcome": { "type": "string", "description": "Key technical learnings" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id", "userId", "date", "status"]
+    },
+    "weeklyReports": {
+      "title": "WeeklyReport",
+      "description": "Weekly training reports submitted by trainees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique weekly report ID" },
+        "userId": { "type": "string", "description": "Author user ID" },
+        "userName": { "type": "string", "description": "Author full name" },
+        "weekStart": { "type": "string", "description": "Week start date (YYYY-MM-DD)" },
+        "weekEnd": { "type": "string", "description": "Week end date (YYYY-MM-DD)" },
+        "status": { "type": "string", "description": "Report status: DRAFT, SUBMITTED, REVIEWED, REJECTED" },
+        "classroomTrainingSummary": { "type": "string", "description": "Classroom summary" },
+        "shopFloorTrainingSummary": { "type": "string", "description": "Shop floor summary" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id", "userId", "status"]
+    },
+    "systemConfig": {
+      "title": "SystemConfig",
+      "description": "Shared application configuration and settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Config document key" },
+        "value": { "type": "string", "description": "Serialized configuration data" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id"]
+    },
+    "formDrafts": {
+      "title": "FormDraft",
+      "description": "Auto-saved in-progress form drafts for Daily and Weekly training reports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique draft storage key" },
+        "userId": { "type": "string", "description": "Author user ID" },
+        "reportType": { "type": "string", "description": "DAILY or WEEKLY" },
+        "timestamp": { "type": "number", "description": "Timestamp in milliseconds" },
+        "data": { "type": "object", "description": "Serialized draft form values" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last auto-save" }
+      },
+      "required": ["id", "userId", "reportType"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profile records indexed by userId"
+    },
+    "/dailyReports/{reportId}": {
+      "schema": "dailyReports",
+      "description": "Daily plant training reports indexed by reportId"
+    },
+    "/weeklyReports/{reportId}": {
+      "schema": "weeklyReports",
+      "description": "Weekly training synthesis reports indexed by reportId"
+    },
+    "/systemConfig/{configKey}": {
+      "schema": "systemConfig",
+      "description": "System-wide parameters, logos, and configuration state"
+    },
+    "/formDrafts/{draftKey}": {
+      "schema": "formDrafts",
+      "description": "Dual-persisted 30s auto-saved draft states for report forms"
+    }
+  }
+}
