@@ -6,16 +6,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   export default defineConfig(() => {
   return {
-    base: '/Mohit-Gupta/',
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
-  };
-});,
-  return {
+
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
